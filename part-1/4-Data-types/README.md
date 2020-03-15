@@ -302,3 +302,76 @@ console.log(mapItems) // {value: 100 ...}
 
 ```
 
+
+`some`
+
+some() function check whether at least one of the elements of the array satisfies the condition checked by the argument function. It returns a Boolean value.
+
+
+```js
+let results = arr.some(function(item, index, array) {
+});
+
+
+const items = [
+  { name: 'Bike', price: 100 },
+  { name: 'Bike', price: 100 },
+  { name: 'Car', price: 120 },
+  { name: 'TV', price: 300 },
+  { name: 'Book', price: 10 },
+  { name: 'Computer', price: 120 },
+  { name: 'Computer', price: 110 }
+];
+
+const inExpenseItems = items.some(item => {
+  return item.price < 120;
+});
+
+console.log(inExpenseItems) // true,
+
+```
+
+`every`
+
+every() method checks whether all the elements of the array satisfy the given condition or not that is provided by a function passed to it as the argument.
+
+This function returns Boolean value true if all the elements of the array follow the condition implemented by the argument function. If one of the elements of the array does not satisfy the argument function, then this function returns false.
+
+
+```js
+let results = arr.some(function(item, index, array) {
+});
+
+
+const items = [
+  { name: 'Bike', price: 100 },
+  { name: 'Bike', price: 100 },
+  { name: 'Car', price: 120 },
+  { name: 'TV', price: 300 },
+  { name: 'Book', price: 10 },
+  { name: 'Computer', price: 120 },
+  { name: 'Computer', price: 110 }
+];
+
+const inExpenseItems = items.every(item => {
+  return item.price < 120;
+});
+
+console.log(inExpenseItems) // false,
+
+```
+
+`reduce`
+
+reduce() method in JavaScript is used to reduce the array to a single value and executes a provided function for each value of the array (from left-to-right) and the return value of the function is stored in an accumulator.
+
+
+```js
+const numbers = [1, 3, 4, 5];
+let sum = numbers.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue;
+}, 0);
+
+console.log(sum) //13
+
+```
