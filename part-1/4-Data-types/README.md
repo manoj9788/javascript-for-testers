@@ -18,7 +18,7 @@ Objects can also be stored as functions like
 let element = {
   name: 'tester',
   sayHi: function() {
-    alert('Hi buddy!');
+    console.log('Hi buddy!');
   }
 };
 
@@ -122,15 +122,13 @@ console.log(cars); // [ 'Audi Q5', 'Swift', 'Audi', 'Benz']
 
 # Array Methods
 
-
 `from`
 
 There’s a universal method Array.from that takes an iterable or array-like value and makes a “real” Array from it
 
 ```js
 let str = 'Test';
-console.log(Array.from(str)) // ['T', 'e', 's', 't']
-
+console.log(Array.from(str)); // ['T', 'e', 's', 't']
 ```
 
 Add/Remove items - We already saw pop,shift,unshift and push for these.
@@ -176,7 +174,7 @@ let arr = ['I', 'study', 'JavaScript'];
 // then insert "complex" and "language"
 arr.splice(2, 0, 'complex', 'language');
 
-alert(arr); // "I", "study", "complex", "language", "JavaScript"
+console.log(arr); // "I", "study", "complex", "language", "JavaScript"
 ```
 
 ### Iterate: forEach
@@ -200,30 +198,28 @@ for (let i = 0; i < items.length; i++) {
 }
 
 items.forEach((item, index, array) => {
-  console.log(`${item} is at index ${index} in ${array}`)
-})
+  console.log(`${item} is at index ${index} in ${array}`);
+});
 ```
 
 ### Searching in array
 
 `indexOf/lastIndexOf and includes`
 
-* arr.indexOf(item, from) – looks for item starting from index from, and returns the index where it was found, otherwise -1.
-* arr.lastIndexOf(item, from) – same, but looks for from right to left.
-* arr.includes(item, from) – looks for item starting from index from, returns true if found.
+- arr.indexOf(item, from) – looks for item starting from index from, and returns the index where it was found, otherwise -1.
+- arr.lastIndexOf(item, from) – same, but looks for from right to left.
+- arr.includes(item, from) – looks for item starting from index from, returns true if found.
 
 ```js
-
 let arr = [1, 0, false];
 
 console.log(arr.indexOf(0)); // 1
 console.log(arr.indexOf(false)); // 2
 console.log(arr.indexOf(null)); // -1
 console.log(arr.includes(1)); // true
-
 ```
 
-`find and findIndex` 
+`find and findIndex`
 
 ```js
 let result = arr.find(function(item, index, array) {
@@ -241,12 +237,11 @@ const items = [
   { name: 'Computer', price: 110 }
 ];
 
-
 const foundItems = items.find(item => {
   return item.name === 'Computer';
 });
 
-console.log(foundItems.price) // 120
+console.log(foundItems.price); // 120
 ```
 
 `filter`
@@ -263,7 +258,6 @@ let results = arr.filter(function(item, index, array) {
   // returns empty array if nothing found
 });
 
-
 const items = [
   { name: 'Bike', price: 100 },
   { name: 'Bike', price: 100 },
@@ -278,22 +272,18 @@ const filterItems = items.filter(item => {
   return item.name === 'Computer';
 });
 
-console.log(filterItems.length) //2
-
+console.log(filterItems.length); //2
 ```
 
-
-`map` 
+`map`
 
 map() method is used to iterate over an array and calling function on every element of array.
-
 
 ```js
 let results = arr.map(function(item, index, array) {
   // if true item is pushed to results and the iteration continues
   // returns empty array if nothing found
 });
-
 
 const items = [
   { name: 'Bike', price: 100 },
@@ -309,20 +299,15 @@ const mapItems = items.map(item => {
   return { value: item.price };
 });
 
-console.log(mapItems) // {value: 100 ...}
-
+console.log(mapItems); // {value: 100 ...}
 ```
-
 
 `some`
 
 some() function check whether at least one of the elements of the array satisfies the condition checked by the argument function. It returns a Boolean value.
 
-
 ```js
-let results = arr.some(function(item, index, array) {
-});
-
+let results = arr.some(function(item, index, array) {});
 
 const items = [
   { name: 'Bike', price: 100 },
@@ -338,8 +323,7 @@ const inExpenseItems = items.some(item => {
   return item.price < 120;
 });
 
-console.log(inExpenseItems) // true,
-
+console.log(inExpenseItems); // true,
 ```
 
 `every`
@@ -348,11 +332,8 @@ every() method checks whether all the elements of the array satisfy the given co
 
 This function returns Boolean value true if all the elements of the array follow the condition implemented by the argument function. If one of the elements of the array does not satisfy the argument function, then this function returns false.
 
-
 ```js
-let results = arr.some(function(item, index, array) {
-});
-
+let results = arr.some(function(item, index, array) {});
 
 const items = [
   { name: 'Bike', price: 100 },
@@ -368,14 +349,12 @@ const inExpenseItems = items.every(item => {
   return item.price < 120;
 });
 
-console.log(inExpenseItems) // false,
-
+console.log(inExpenseItems); // false,
 ```
 
 `reduce`
 
 reduce() method in JavaScript is used to reduce the array to a single value and executes a provided function for each value of the array (from left-to-right) and the return value of the function is stored in an accumulator.
-
 
 ```js
 const numbers = [1, 3, 4, 5];
@@ -383,8 +362,7 @@ let sum = numbers.reduce((accumulator, currentValue) => {
   return accumulator + currentValue;
 }, 0);
 
-console.log(sum) //13
-
+console.log(sum); //13
 ```
 
 # Map and Set
@@ -395,13 +373,13 @@ Map is a collection of keyed data items, just like an Object. But the main diffe
 
 Methods and properties are:
 
-* `new Map()` – creates the map.
-* `map.set(key, value)` – stores the value by the key.
-* `map.get(key)` – returns the value by the key, undefined if key * doesn’t `exist in map.
-* `map.has(key)` – returns true if the key exists, false otherwise.
-* `map.delete(key)` – removes the value by the key.
-* `map.clear()` – removes everything from the map.
-* `map.size` – returns the current element count.
+- `new Map()` – creates the map.
+- `map.set(key, value)` – stores the value by the key.
+- `map.get(key)` – returns the value by the key, undefined if key \* doesn’t `exist in map.
+- `map.has(key)` – returns true if the key exists, false otherwise.
+- `map.delete(key)` – removes the value by the key.
+- `map.clear()` – removes everything from the map.
+- `map.size` – returns the current element count.
 
 ```js
 let map = new Map();
@@ -409,10 +387,10 @@ map.set('1', 'Tester');
 map.set(1, 'Hacker');
 map.set(true, 'Developer');
 
-consol.log(map.get(1)) // Hacker
-consol.log(map.get('1')) // Tester
-consol.log(map.get(true)) // Developer
-console.log(map.size()) // 3
+consol.log(map.get(1)); // Hacker
+consol.log(map.get('1')); // Tester
+consol.log(map.get(true)); // Developer
+console.log(map.size()); // 3
 ```
 
 ### Iteration over Map
@@ -424,20 +402,18 @@ let map = new Map();
 map.set('role', 'Tester');
 map.set('age', 23);
 
-console.log(map.keys());  //{ 'role', 'age' }
+console.log(map.keys()); //{ 'role', 'age' }
 
 let keyValues = map.keys();
-console.log(keyValues.next().value) // role
-console.log(keyValues.next().value) // age
-console.log(keyValues.next().value) // undefined
+console.log(keyValues.next().value); // role
+console.log(keyValues.next().value); // age
+console.log(keyValues.next().value); // undefined
 
-console.log(map.values()) // { 'Tester', 23}
+console.log(map.values()); // { 'Tester', 23}
 
 let entries = map.entries();
-console.log(entries) // { [ 'role', 'Tester' ], [ 'age', 23 ] }
-
+console.log(entries); // { [ 'role', 'Tester' ], [ 'age', 23 ] }
 ```
-
 
 If we have a plain object, and we’d like to create a Map from it, then we can use built-in method Object.entries(obj) that returns an array of key/value pairs for an object exactly in that format.
 
@@ -445,7 +421,7 @@ So we can create a map from an object like this:
 
 ```js
 let obj = {
-  name: "tester",
+  name: 'tester',
   age: 30
 };
 
@@ -470,28 +446,25 @@ let prices = Object.fromEntries([
 console.log(prices.orange); // 2
 ```
 
-
 ### Set
 
 A Set is a special type collection – “set of values” (without keys), where each value may occur only once.
 
 Its main methods are:
 
-* `new Set(iterable)` – creates the set, and if an iterable object is provided (usually an array), copies values from it into the set.
-* `set.add(value)` – adds a value, returns the set itself.
-* `set.delete(value)` – removes the value, returns true if value existed at the moment of * `the call, otherwise false.
-* `set.has(value)` – returns true if the value exists in the set, otherwise false.
-* `set.clear()` – removes everything from the set.
-* `set.size` – is the elements count
-
+- `new Set(iterable)` – creates the set, and if an iterable object is provided (usually an array), copies values from it into the set.
+- `set.add(value)` – adds a value, returns the set itself.
+- `set.delete(value)` – removes the value, returns true if value existed at the moment of \* `the call, otherwise false.
+- `set.has(value)` – returns true if the value exists in the set, otherwise false.
+- `set.clear()` – removes everything from the set.
+- `set.size` – is the elements count
 
 ```js
-
 let set = new Set();
 
-let tester = { name: "Tester" };
-let ba = { name: "BA" };
-let dev = { name: "Developer" };
+let tester = { name: 'Tester' };
+let ba = { name: 'BA' };
+let dev = { name: 'Developer' };
 
 // visits, some users come multiple times
 set.add(tester);
@@ -501,12 +474,171 @@ set.add(tester);
 set.add(dev);
 
 // set keeps only unique values
-console.log( set.size ); // 3
+console.log(set.size); // 3
 
 for (let user of set) {
-  alert(user.name); // tester (then ba and dev)
+  console.log(user.name); // tester (then ba and dev)
 }
 ```
 
 [Iteration over set is using forEach](#Iterate-forEach)
 
+# Destructuring and Spread
+
+### Array destructuring
+
+```js
+let arr = ['Jenkins', 'TeamCity'];
+let [firstName, lastName] = arr;
+console.log(firstName); // Jenkins
+console.log(lastName); // TeamCity
+```
+
+Variables can be be destructed
+
+```js
+let [firstName, lastName] = 'Jenkins TeamCity'.split(' ');
+
+console.log(firstName); // Jenkins
+console.log(lastName); // TeamCity
+```
+
+Assign anything to left side
+
+```js
+let user = {};
+[user.name, user.surname] = 'Jenkins TeamCity'.split(' ');
+
+console.log(user); // { name: 'Jenkins', surname: 'TeamCity' }
+```
+
+Looping with entries
+
+```js
+let user = {
+  name: 'John',
+  age: 30
+};
+
+// loop over keys-and-values
+for (let [key, value] of Object.entries(user)) {
+  console.log(`${key}:${value}`); // name:John, then age:30
+}
+```
+
+### The rest ...
+
+If we want not just to get first values, but also to gather all that follows – we can add one more parameter that gets “the rest” using three dots "...":
+
+```js
+let [name1, name2, ...rest] = [
+  'Julius',
+  'Caesar',
+  'Consul',
+  'of the Roman Republic'
+];
+
+console.log(name1); // Julius
+
+console.log(name2); // Caesar
+
+// Note that type of `rest` is Array.
+console.log(rest[0]); // Consul
+console.log(rest[1]); // of the Roman Republic
+console.log(rest.length); // 2
+```
+
+If we want a “default” value to replace the missing one, we can provide it using =:
+
+```js
+let [name = 'Guest', surname = 'Anonymous'] = ['Julius'];
+
+console.log(name); // Julius (from array)
+console.log(surname); // Anonymous (default used)
+```
+
+### Object destructuring
+
+We have an existing object at the right side, that we want to split into variables. The left side contains a “pattern” for corresponding properties. In the simple case, that’s a list of variable names in {...}.
+
+For instance:
+
+```js
+let options = {
+  title: 'Menu',
+  width: 100,
+  height: 200
+};
+
+let { title, width, height } = options;
+
+console.log(title); // Menu
+console.log(width); // 100
+console.log(height); // 200
+```
+
+If we want a “default” value to replace the missing one, we can provide it using =:
+
+```js
+let options = {
+  title: 'Menu'
+};
+
+let { title, width = 100, height = 200 } = options;
+
+console.log(title); // Menu
+console.log(width); // 100
+console.log(height); // 200
+```
+
+We can also use the rest pattern
+
+```js
+let options = {
+  title: 'Menu',
+  height: 200,
+  width: 100
+};
+
+let { title, ...rest } = options;
+
+console.log(rest.height); // 200
+console.log(rest.width); // 100
+```
+
+### Function Parameters
+
+There are times when a function has many parameters, most of which are optional. That’s especially true for user interfaces. Imagine a function that creates a menu. It may have a width, a height, a title, items list and so on.
+
+// Bad of implementing
+
+```js
+function showMenu(title = 'Untitled', width = 200, height = 100, items = []) {
+  // ...
+}
+```
+
+Better way
+
+```js
+// we pass object to function
+let options = {
+  title: 'My menu',
+  items: ['Item1', 'Item2']
+};
+
+// ...and it immediately expands it to variables
+function showMenu({
+  title = 'Untitled',
+  width = 200,
+  height = 100,
+  items = []
+}) {
+  // title, items – taken from options,
+  // width, height – defaults used
+  console.log(`${title} ${width} ${height}`); // My Menu 200 100
+  console.log(items); // Item1, Item2
+}
+
+showMenu(options);
+```
