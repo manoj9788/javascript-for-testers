@@ -10,13 +10,13 @@ A primitive is a value of type.
 We have 7 primitive types `string, number, bigint, boolean, symbol, null and undefined`
 
 An object is capable of storing multiple values as properties like
-`{name: "John", age: 30}`
+`{name: "tester", age: 30}`
 
 Objects can also be stored as functions like
 
 ```js
 let element = {
-  name: 'John',
+  name: 'tester',
   sayHi: function() {
     alert('Hi buddy!');
   }
@@ -121,6 +121,17 @@ console.log(cars); // [ 'Audi Q5', 'Swift', 'Audi', 'Benz']
 ```
 
 # Array Methods
+
+
+`from`
+
+There’s a universal method Array.from that takes an iterable or array-like value and makes a “real” Array from it
+
+```js
+let str = 'Test';
+console.log(Array.from(str)) // ['T', 'e', 's', 't']
+
+```
 
 Add/Remove items - We already saw pop,shift,unshift and push for these.
 
@@ -375,3 +386,127 @@ let sum = numbers.reduce((accumulator, currentValue) => {
 console.log(sum) //13
 
 ```
+
+# Map and Set
+
+### Map
+
+Map is a collection of keyed data items, just like an Object. But the main difference is that Map allows keys of any type.
+
+Methods and properties are:
+
+* `new Map()` – creates the map.
+* `map.set(key, value)` – stores the value by the key.
+* `map.get(key)` – returns the value by the key, undefined if key * doesn’t `exist in map.
+* `map.has(key)` – returns true if the key exists, false otherwise.
+* `map.delete(key)` – removes the value by the key.
+* `map.clear()` – removes everything from the map.
+* `map.size` – returns the current element count.
+
+```js
+let map = new Map();
+map.set('1', 'Tester');
+map.set(1, 'Hacker');
+map.set(true, 'Developer');
+
+consol.log(map.get(1)) // Hacker
+consol.log(map.get('1')) // Tester
+consol.log(map.get(true)) // Developer
+console.log(map.size()) // 3
+```
+
+### Iteration over Map
+
+For looping over map, we can use `keys`, `values`, `entries`
+
+```js
+let map = new Map();
+map.set('role', 'Tester');
+map.set('age', 23);
+
+console.log(map.keys());  //{ 'role', 'age' }
+
+let keyValues = map.keys();
+console.log(keyValues.next().value) // role
+console.log(keyValues.next().value) // age
+console.log(keyValues.next().value) // undefined
+
+console.log(map.values()) // { 'Tester', 23}
+
+let entries = map.entries();
+console.log(entries) // { [ 'role', 'Tester' ], [ 'age', 23 ] }
+
+```
+
+
+If we have a plain object, and we’d like to create a Map from it, then we can use built-in method Object.entries(obj) that returns an array of key/value pairs for an object exactly in that format.
+
+So we can create a map from an object like this:
+
+```js
+let obj = {
+  name: "tester",
+  age: 30
+};
+
+let map = new Map(Object.entries(obj)); // [ ["name","tester"], ["age", 30] ]
+
+console.log(map.get('name')); // tester
+```
+
+We’ve just seen how to create Map from a plain object with Object.entries(obj).
+
+There’s Object.fromEntries method that does the reverse: given an array of [key, value] pairs, it creates an object from them:
+
+```js
+let prices = Object.fromEntries([
+  ['banana', 1],
+  ['orange', 2],
+  ['meat', 4]
+]);
+
+// now prices = { banana: 1, orange: 2, meat: 4 }
+
+console.log(prices.orange); // 2
+```
+
+
+### Set
+
+A Set is a special type collection – “set of values” (without keys), where each value may occur only once.
+
+Its main methods are:
+
+* `new Set(iterable)` – creates the set, and if an iterable object is provided (usually an array), copies values from it into the set.
+* `set.add(value)` – adds a value, returns the set itself.
+* `set.delete(value)` – removes the value, returns true if value existed at the moment of * `the call, otherwise false.
+* `set.has(value)` – returns true if the value exists in the set, otherwise false.
+* `set.clear()` – removes everything from the set.
+* `set.size` – is the elements count
+
+
+```js
+
+let set = new Set();
+
+let tester = { name: "Tester" };
+let ba = { name: "BA" };
+let dev = { name: "Developer" };
+
+// visits, some users come multiple times
+set.add(tester);
+set.add(ba);
+set.add(dev);
+set.add(tester);
+set.add(dev);
+
+// set keeps only unique values
+console.log( set.size ); // 3
+
+for (let user of set) {
+  alert(user.name); // tester (then ba and dev)
+}
+```
+
+[Iteration over set is using forEach](#Iterate-forEach)
+
