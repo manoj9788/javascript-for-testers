@@ -1,0 +1,14 @@
+{
+  "name": "mocha-test",
+  "version": "1.0.0",
+  "description": "This chapter we will discuss on code style, mocha test framework and Babel.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha __tests__/*.spec.js --timeout=10000"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mocha": "^7.1.0"
+  }
+}
