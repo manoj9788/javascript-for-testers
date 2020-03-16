@@ -4,6 +4,19 @@
 
 JavaScript allows us to work with primitives (strings, numbers, etc.) as if they were objects.
 
+There are three major Datatypes in JavaScript.
+* Primitive
+    * Numbers
+    * Strings
+    * Boolean
+* Trivial
+    * Null
+    * Undefined
+* Composite
+    * Objects
+    * Functions
+    * Arrays
+
 Let's look at difference in primitives and objects
 
 A primitive is a value of type.
