@@ -65,12 +65,13 @@ console.log(sum); // prints 50
 
 #### Default values for Parameters
 
-If the parameters for the functions are not passed, it will throw an error. Missing parameter is considered as `undefined`
+If the parameters for the functions are not passed, it will NOT throw an error. Missing parameter is considered as `undefined`
 
 ```javascript
 var sum = 0;
 
 function addTwoIntegers(argument1, argument2) {
+	console.log(argument2); // prints undefined
 	sum = argument1 + argument2;
 	return sum;
 }
