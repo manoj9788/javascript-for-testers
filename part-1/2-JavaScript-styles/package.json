@@ -4,13 +4,14 @@
   "description": "This chapter we will discuss on code style, mocha test framework and Babel.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --require esm __tests__/*.spec.js --timeout=10000"
+    "test": "mocha --require esm __tests__/mocha_refactor.spec.js --timeout=10000"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "mocha": "^7.1.0",
     "node-fetch": "2.6.0",
-    "esm": "^3.2.25"
+    "esm": "^3.2.25",
+    "chai": "^4.2.0"
   }
 }
