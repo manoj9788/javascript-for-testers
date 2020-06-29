@@ -1,14 +1,14 @@
 class Vehicle {
-    constructor(model_name, brand, model){
-        this.model_name = model_name;
+    constructor(modelName, brand, model){
+        this.modelName = modelName;
         this.brand = brand
         this.model = model;
     }
 }
 
 let Vehicle2 = class {
-    constructor(model_name, brand, model) {
-          this.name = name;
+    constructor(modelName, brand, model) {
+          this.modelName = modelName;
           this.brand = brand
           this.model = model;
     }
@@ -17,18 +17,18 @@ let Vehicle2 = class {
 class Car extends Vehicle {
 
     noOfGears(){
-        let car_gears = 5;
-        return car_gears;
+        let carGears = 5;
+        return carGears;
     }
 
     getVechicleDetails(){
-        let vechicleDetails = `${this.brand} ${this.model_name} ${this.model} ${this.noOfGears()} Gears`;
+        let vechicleDetails = `${this.brand} ${this.modelName} ${this.model} ${this.noOfGears()} Gears`;
         return vechicleDetails;
     }
 
     static getCarPrice() {
-        let car_price = "10 lakhs";
-        return car_price;
+        let carPrice = "10 lakhs";
+        return carPrice;
     }
 }
 

@@ -43,14 +43,14 @@ Like in other languages, class body is what goes between the `{ }` braces. Funct
 
 ```javascript
 class Vehicle {
-    constructor(model_name, brand, model){
-        this.model_name = model_name;
+    constructor(modelName, brand, model){
+        this.modelName = modelName;
         this.brand = brand
         this.model = model;
     }
 
     getVechicleDetails(){
-        let vechicleDetails = `${this.brand} ${this.model_name} ${this.model}`;
+        let vechicleDetails = `${this.brand} ${this.modelName} ${this.model}`;
         return vechicleDetails;
     }
 }
@@ -62,8 +62,8 @@ Class Inheritance is a way to extend from another class. New functionality can b
 
 ```javascript
 class Vehicle {
-    constructor(model_name, brand, model){
-        this.model_name = model_name;
+    constructor(modelName, brand, model){
+        this.modelName = modelName;
         this.brand = brand
         this.model = model;
     }
@@ -72,18 +72,18 @@ class Vehicle {
 class Car extends Vehicle {
 
     noOfGears(){
-        let car_gears = 5;
-        return car_gears;
+        let carGears = 5;
+        return carGears;
     }
 
     getVechicleDetails(){
-        let vechicleDetails = `${this.brand} ${this.model_name} ${this.model} ${this.noOfGears()} Gears`;
+        let vechicleDetails = `${this.brand} ${this.modelName} ${this.model} ${this.noOfGears()} Gears`;
         return vechicleDetails;
     }
 
     static getCarPrice() {
-        let car_price = "10 lakhs";
-        return car_price;
+        let carPrice = "10 lakhs";
+        return carPrice;
     }
 }
 
@@ -100,8 +100,8 @@ The `static` keyword defines function in a class as static function. `static` fu
 
 ```javascript
     static getCarPrice() {
-        let car_price = "10 lakhs";
-        return car_price;
+        let carPrice = "10 lakhs";
+        return carPrice;
     }
 ```
 
