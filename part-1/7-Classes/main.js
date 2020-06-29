@@ -1,38 +1,87 @@
 class Vehicle {
-    constructor(model_name, brand, model){
-        this.model_name = model_name;
+    constructor(modelName, brand, model){
+        this.modelName = modelName;
         this.brand = brand
         this.model = model;
     }
+
+    getVechicleDetails(){
+        let vechicleDetails = `${this.brand} ${this.modelName} ${this.model}`;
+        return vechicleDetails;
+    }
 }
 
+
 let Vehicle2 = class {
-    constructor(model_name, brand, model) {
-          this.name = name;
-          this.brand = brand
+    constructor(modelName, brand, model) {
+          this.modelName = modelName;
+          this.brand = brand;
           this.model = model;
     }
 };
 
+let vehicle1 = new Vehicle("Nexon", "Tata", 2018);
+
+console.log(vehicle1.getVechicleDetails());
+
+// Getters and Setters
+
+class Vehicle3 {
+
+    set modelName(modelName){
+        this.modelName = modelName;
+    }
+
+    get modelName(){
+        return this.modelName;
+    }
+
+    set brand(brand){
+        this.brand = brand;
+    }
+
+    get brand(){
+        return this.brand;
+    }
+
+    set model(model){
+        this.model = model;
+    }
+
+    get model(){
+        return this.model;
+    }
+}
+
+let vehicle2 = new Vehicle2();
+vehicle2.modelName = "Nexon";
+vehicle2.brand     = "Tata";
+vehicle2.model     = "2018";
+
+console.log("Vehicle Details are " + vehicle2.modelName + ' ' + vehicle2.brand + ' ' + vehicle2.modelName);
+
+
+// Inheritance
+
 class Car extends Vehicle {
 
     noOfGears(){
-        let car_gears = 5;
-        return car_gears;
+        let carGears = 5;
+        return carGears;
     }
 
     getVechicleDetails(){
-        let vechicleDetails = `${this.brand} ${this.model_name} ${this.model} ${this.noOfGears()} Gears`;
+        let vechicleDetails = `${this.brand} ${this.modelName} ${this.model} ${this.noOfGears()} Gears`;
         return vechicleDetails;
     }
 
     static getCarPrice() {
-        let car_price = "10 lakhs";
-        return car_price;
+        let carPrice = "10 lakhs";
+        return carPrice;
     }
 }
 
-let car1 = new Car("Nexon", "Tata", 2018);
+let car1 = new Car("Altroz", "Tata", 2020);
 
 console.log(car1.getVechicleDetails());
 console.log(Car.getCarPrice());

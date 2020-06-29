@@ -34,7 +34,7 @@ In Javascript, `class` should be declared first, then it can be accessed. `Class
 To create an object of a class, like other languages `new` keyword is used and by default `constructor` method will be invoked.
 
 ```javascript
-const vehicle1 = new Vehicle();
+const vehicle = new Vehicle();
 ```
 
 ## Class Body
@@ -43,17 +43,21 @@ Like in other languages, class body is what goes between the `{ }` braces. Funct
 
 ```javascript
 class Vehicle {
-    constructor(model_name, brand, model){
-        this.model_name = model_name;
-        this.brand = brand
+    constructor(modelName, brand, model){
+        this.modelName = modelName;
+        this.brand = brand;
         this.model = model;
     }
 
     getVechicleDetails(){
-        let vechicleDetails = `${this.brand} ${this.model_name} ${this.model}`;
+        let vechicleDetails = `${this.brand} ${this.modelName} ${this.model}`;
         return vechicleDetails;
     }
 }
+
+let vehicle = new Vehicle("Nexon", "Tata", 2018);
+
+console.log(vehicle.getVechicleDetails());
 ```
 
 ## Inhertiance
@@ -62,8 +66,8 @@ Class Inheritance is a way to extend from another class. New functionality can b
 
 ```javascript
 class Vehicle {
-    constructor(model_name, brand, model){
-        this.model_name = model_name;
+    constructor(modelName, brand, model){
+        this.modelName = modelName;
         this.brand = brand
         this.model = model;
     }
@@ -72,27 +76,69 @@ class Vehicle {
 class Car extends Vehicle {
 
     noOfGears(){
-        let car_gears = 5;
-        return car_gears;
+        let carGears = 5;
+        return carGears;
     }
 
     getVechicleDetails(){
-        let vechicleDetails = `${this.brand} ${this.model_name} ${this.model} ${this.noOfGears()} Gears`;
+        let vechicleDetails = `${this.brand} ${this.modelName} ${this.model} ${this.noOfGears()} Gears`;
         return vechicleDetails;
     }
 
     static getCarPrice() {
-        let car_price = "10 lakhs";
-        return car_price;
+        let carPrice = "10 lakhs";
+        return carPrice;
     }
 }
 
-let car1 = new Car("Nexon", "Tata", 2018);
+let car = new Car("Nexon", "Tata", 2018);
 
-console.log(car1.getVechicleDetails());
+console.log(car.getVechicleDetails());
 ```
 
 Inheritance in Javascript can also be acheived using the Prototype.
+
+
+### Getters and Setters
+
+`ECMAScript 2015` brings a new syntax for adding Getters and Setters on object properties. Classes allows to use getter and setter methods. Keywords `get` and `set` used for the methods. Getter and Setter methods can accessed like object properties.
+
+```javascript
+class Vehicle {
+
+    set modelName(modelName){
+        this.modelName = modelName;
+    }
+
+    get modelName(){
+        return this.modelName;
+    }
+
+    set brand(brand){
+        this.brand = brand;
+    }
+
+    get brand(){
+        return this.brand;
+    }
+
+    set model(model){
+        this.model = model;
+    }
+
+    get model(){
+        return this.model;
+    }
+}
+
+let vehicle = new Vehicle();
+vehicle.modelName = "Nexon";
+vehicle.brand     = "Tata";
+vehicle.model     = "2018";
+
+console.log("Vehicle Details are " + vehicle.modelName + ' ' + vehicle.brand + ' ' + vehicle.modelName);
+
+```
 
 ### Static Methods
 
@@ -100,8 +146,8 @@ The `static` keyword defines function in a class as static function. `static` fu
 
 ```javascript
     static getCarPrice() {
-        let car_price = "10 lakhs";
-        return car_price;
+        let carPrice = "10 lakhs";
+        return carPrice;
     }
 ```
 
@@ -114,7 +160,7 @@ console.log(Car.getCarPrice());
 It can not be called with the instance of the class
 
 ```javascript
-let car1 = new Car("Nexon", "Tata", 2018);
+let car = new Car("Nexon", "Tata", 2018);
 
-console.log(car1.getCarPrice()); //Uncaught TypeError: car1.getCarPrice is not a function
+console.log(car.getCarPrice()); //Uncaught TypeError: car.getCarPrice is not a function
 ```
