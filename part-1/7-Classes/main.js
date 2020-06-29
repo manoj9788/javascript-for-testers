@@ -14,9 +14,9 @@ class Vehicle {
 
 let Vehicle2 = class {
     constructor(modelName, brand, model) {
-          this.modelName = modelName;
-          this.brand = brand;
-          this.model = model;
+        this.modelName = modelName;
+        this.brand = brand;
+        this.model = model;
     }
 };
 
