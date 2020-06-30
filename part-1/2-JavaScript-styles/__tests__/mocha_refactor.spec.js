@@ -2,45 +2,55 @@ import fetch from 'node-fetch';
 
 import Search from './MovieSearch';
 
+import find from '../api/Api';
+
 import { forEachAsync } from '../utils/helper';
 var expect = require('chai').expect;
 
+let movies;
+let series;
+
 describe('Movie Details', () => {
-  it('User Should be able to see the Movie details', async () => {
-    const movies = await Search.init({
+  beforeEach('Get Movies and Series', async () => {
+    movies = await Search.init({
       s: 'Press+1+for+Tamil',
       apiKey: 'c9079b0f',
       page: 1,
       type: 'movie',
     });
 
-    const series = await Search.init({
+    series = await Search.init({
       s: 'Tamil',
       apiKey: 'c9079b0f',
       page: 1,
       type: 'series',
       plot: 'full',
     });
+  });
 
+  it('User Should be able to see the Movie details', async () => {
+    allure.description('Something!!');
     const foundMovies = movies.findByYear(2011);
     const foundSeries = series.findByYear(2012);
 
     expect(foundMovies).to.have.lengthOf.at.least(1);
     expect(foundSeries).to.have.lengthOf.at.least(1);
+  });
 
-    /* TODO Create a Map with Series and Movies */
+  it('Create Map and find for series', async () => {
+    const foundMovies = movies.findByYear(2011);
+    const foundSeries = series.findByYear(2012);
     let moviesMap = new Map();
     moviesMap.set('series', foundSeries);
     moviesMap.set('movies', foundMovies);
-    // TODO Get Movie details from using the imdbID http://www.omdbapi.com/?i=id&apikey= and Assert
 
     const seriesList = moviesMap.get('series');
 
-    /* Async in ForLoop */
     await forEachAsync(seriesList, async (el) => {
-      const movieDetail = await fetch(
-        `http://www.omdbapi.com/?i=${el.imdbID}&apikey=c9079b0f`
-      );
+      const movieDetail = await find({
+        i: el.imdbID,
+        apiKey: 'c9079b0f',
+      });
       await movieDetail.json();
     });
 

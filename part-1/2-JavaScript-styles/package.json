@@ -4,7 +4,10 @@
   "description": "This chapter we will discuss on code style, mocha test framework and Babel.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --require esm __tests__/mocha_refactor.spec.js --timeout=10000"
+    "clean": "rimraf ./allure-results/history",
+    "copy": "mv allure-report/history allure-results/history",
+    "test": "mocha --require esm __tests__/mocha_refactor.spec.js --timeout=10000 --reporter mocha-allure-reporter",
+    "allure-report": "allure generate ./allure-results -c && npm run clean && npm run copy && allure open"
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +15,13 @@
     "mocha": "^7.1.0",
     "node-fetch": "2.6.0",
     "esm": "^3.2.25",
-    "chai": "^4.2.0"
+    "rimraf": "^3.0.2",
+    "chai": "^4.2.0",
+    "mochawesome": "6.1.1",
+    "mocha-allure-reporter": "^1.4.0",
+    "allure-commandline": "^2.13.0"
+  },
+  "devDependencies": {
+    "allure-commandline": "^2.13.0"
   }
 }
