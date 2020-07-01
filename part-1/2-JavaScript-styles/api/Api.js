@@ -5,7 +5,12 @@ const baseUrl = newLocal;
 export default async function find(options) {
   createUrl(options);
   const url = baseUrl + createUrl(options);
-  return await fetch(url);
+  const response = await fetch(url);
+  if (response.ok) {
+    return response;
+  } else {
+    throw new Error(response.statusText)
+  }
 }
 
 function createUrl(options) {
